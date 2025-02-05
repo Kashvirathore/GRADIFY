@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <link rel="shortcut icon" href="./Screenshot 2024-02-02 213722.png" type="image/x-icon">
+    <link rel="stylesheet" href="./signup.css">
+    <title>menupage</title>
+</head>
+<body>
+
+<div>
+    <div class="containeeer">
+        <div class="head">
+            <img style="border-radius: 1000px; width: 120px;height: 120px; float: left; padding: 20px; margin-left: 20px;" src="./Screenshot 2024-02-02 213722.png" alt="logo">
+            <h1 style="color: white; padding: 30px; font-size: 50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-left: 100px;">Gradify</h1>
+        </div>
+        <div class="containeeer-overlay"></div>
+    </div>
+
+    <div class="navigation">
+        <ul>
+            <li class="list active">
+                <a href="onePage.html">
+                    <span class="icon"><i class="fa-solid fa-house" style="color: #000000;"></i></span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="profile.html">
+                    <span class="icon"><i class="fa-solid fa-user" style="color: #000000;"></i></span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="onePage.html#contactkrlo">
+                    <span class="icon"><i class="fa-solid fa-address-book" style="color: #000000;"></i></span>
+                    <span class="text">Contact us</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="profile.html#account-change-password">
+                    <span class="icon"><i class="fa-solid fa-key" style="color: #000000;"></i></span>
+                    <span class="text">Change password</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="profile.html">
+                    <span class="icon"><i class="fa-solid fa-gear" style="color: #000000;"></i></span>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
+    </div>
+
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div class="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()"> Log In</button>
+                <button type="button" class="toggle-btn" onclick="register()"> Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form action="login.php" method="POST" id="login" class="input-group">
+                <input type="text" name="userid" class="input-field" placeholder="User-id" required>
+                <input type="password" name="password" class="input-field" placeholder="Enter password" required>
+                <input type="checkbox" class="check-box"><span class="rem">Remember Password</span>
+                <button type="submit" class="submit-btn">Log in</button>
+            </form>
+
+            <!-- Register Form -->
+            <form action="register.php" method="POST" id="register" class="input-group">
+                <input type="text" name="username" class="input-field" placeholder="User-id" required>
+                <input type="email" name="email" class="input-field" placeholder="E-mail id" required>
+                <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 characters" class="input-field" placeholder="Enter password" required>
+                <input type="password" name="confirm_password" class="input-field" placeholder="Confirm password" id="confirm_psw" required>
+                <input type="checkbox" class="check-box"><span class="rem">I agree to the terms & conditions.</span>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Toggle active navigation
+        const list = document.querySelectorAll('.list');
+        function activeLink() {
+            list.forEach((item) => item.classList.remove('active'));
+            this.classList.add('active');
+        };
+        list.forEach((item) => item.addEventListener('click', activeLink));
+
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        var z = document.getElementsByClassName("btn")[0];
+
+        function register() {
+            x.style.marginLeft = "-400px";
+            y.style.marginLeft = "-5px";
+            z.style.left = "110px";
+        }
+
+        function login() {
+            x.style.marginLeft = "-5px";
+            y.style.marginLeft = "450px";
+            z.style.left = "0px";
+        }
+
+        // Password matching validation
+        var myInput = document.getElementById("psw");
+        var confirmInput = document.getElementById("confirm_psw");
+
+        confirmInput.oninput = function () {
+            if (myInput.value !== confirmInput.value) {
+                confirmInput.setCustomValidity("Passwords don't match");
+            } else {
+                confirmInput.setCustomValidity('');
+            }
+        };
+
+        // Display password requirements when focused
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        };
+
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        };
+
+        // Indicator functionality for navigation
+        const links = document.querySelectorAll('.navigation ul li a');
+        const indicator = document.querySelector('.indicator');
+
+        links.forEach((link, index) => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                indicator.style.transform = `translateX(calc(70px * ${index}))`;
+
+                setTimeout(() => {
+                    window.location.href = link.href;
+                }, 500);
+            });
+        });
+    </script>
+
+</body>
+</html>

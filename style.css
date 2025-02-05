@@ -1,0 +1,72 @@
+.logo{
+ border-radius: 500px;
+ box-shadow: 0px 0px 25px black;
+  margin: auto;
+display: flex;
+align-items: center;
+  width: 400px;
+
+  margin-top: 170px;
+  animation-name: popUp;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  
+}
+
+  
+
+  @keyframes popUp {
+    0% {
+      display: flex;
+      align-items: center;
+      width: 300px;
+      margin-top: 250px;
+      transform: translate(-10px, 30px) scale(0.5);
+    }
+    50% {
+      transform: translate(-10px, -50px) scale(1);
+    }
+    60% {
+      transform: translate(0px, -50px) scale(0.5);
+    }
+    70% {
+      transform: translate(0px, -50px) scale(1.2);
+    }
+    80% {
+      transform: translate(0px, -50px) scale(1);
+    }
+    90% {
+      transform: translate(0px, -50px) scale(1.1);
+    }
+    100% {
+      display: flex;
+      align-items: center;
+      width: 300px;
+      margin-top: 250px;
+      transform: translate(0%, -5%) scale(0.5);
+    }
+  }
+  
+
+/* styles.css */
+
+.container{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-image: url(image.png);
+  margin-top: -10px;
+  margin-left: -10px;
+  
+}
+.container-overlay{
+  
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(177, 27, 27 , 0.5);
+}
+
+ 
